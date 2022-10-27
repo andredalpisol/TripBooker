@@ -3,6 +3,6 @@ Project made using react. Consuming Amazon API to get all the cities and countri
 
 How to run:
 
-npm i
+npm i <br>
 npm i react-select yup
 
