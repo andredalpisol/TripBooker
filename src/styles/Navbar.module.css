@@ -1,0 +1,10 @@
+.content_wrapper {
+  margin: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_wrapper img {
+  height: 50px;
+}
