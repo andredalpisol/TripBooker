@@ -20,8 +20,6 @@ const formSchema = yup.object().shape({
     .required("* CPF é um campo obrigatório")
     .length(11, "* CPF precisa ter 11 digitos")
     .integer(),
-  countries: yup.array(),
-  cities: yup.array(),
 });
 
 export default formSchema;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import countryService from "../services/CountryService";
 import cityService from "../services/CityService";
 import styles from "../styles/Home.module.css";
@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import formSchema from "../schemas/formSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast, { Toaster } from "react-hot-toast";
+import { formatCpf, formatTelephone } from "../components/utils/masks";
 
 export const Home = () => {
   const [cities, setCities] = useState([]);
@@ -14,6 +15,14 @@ export const Home = () => {
   const [selectedCities, setSelectedCities] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [formErrors, setFormErrors] = useState("");
+
+  const handleKeyUp = useCallback((e) => {
+    if (e.target.name == "CPF") {
+      formatCpf(e);
+    } else if (e.target.name == "telephone") {
+      formatTelephone(e);
+    }
+  }, []);
 
   //fetch data
 
@@ -81,7 +90,6 @@ export const Home = () => {
             <label htmlFor="email">
               <span> Email</span>
               <input
-                className="form-label"
                 name="email"
                 placeholder="exemplo@gmail.com"
                 {...register("email")}
@@ -93,10 +101,10 @@ export const Home = () => {
               <span> Telefone</span>
               <input
                 {...register("telephone")}
-                className="form-label"
                 placeholder="11912345678"
                 name="telephone"
-                maxLength="11"
+                maxLength="13"
+                onKeyUp={handleKeyUp}
               />
               <p> {errors?.telephone && errors?.telephone.message}</p>
             </label>
@@ -105,9 +113,9 @@ export const Home = () => {
               <input
                 maxLength="11"
                 {...register("CPF")}
-                className="form-label"
                 placeholder="12345678900"
                 name="CPF"
+                onKeyUp={handleKeyUp}
               />
               <p> {errors?.CPF && errors?.CPF.message}</p>
             </label>
