@@ -34,7 +34,7 @@ export const Home = () => {
   }, []);
 
   //toast
-  const notify = () => toast.su("Reserva feita com sucesso!");
+  const notify = () => toast.success("Reserva feita com sucesso!");
 
   //form
 
@@ -96,14 +96,14 @@ export const Home = () => {
                 className="form-label"
                 placeholder="12113213213"
                 name="telephone"
-                maxlength="11"
+                maxLength="11"
               />
               <p> {errors?.telephone && errors?.telephone.message}</p>
             </label>
             <label htmlFor="CPF">
               <span> CPF</span>
               <input
-                maxlength="11"
+                maxLength="11"
                 {...register("CPF")}
                 className="form-label"
                 placeholder="12345678900"
