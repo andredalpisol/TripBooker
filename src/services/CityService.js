@@ -6,12 +6,19 @@ const cityService = {
   getCities: async function () {
     const res = await axios.get(baseUrl);
 
-    return res.data.map((city) => {
-      return {
-        value: city.name_ptbr,
-        label: city.name_ptbr,
-      };
-    });
+    return res.data
+      .sort((a, b) => {
+        console.log(a);
+        a = a.name;
+        b = b.name;
+        return a.localeCompare(b);
+      })
+      .map((city) => {
+        return {
+          value: city.name,
+          label: city.name,
+        };
+      });
   },
 };
 
