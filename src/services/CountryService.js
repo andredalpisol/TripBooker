@@ -7,8 +7,8 @@ const countryService = {
     const res = await axios.get(baseUrl);
     return res.data.map((country) => {
       return {
-        value: country.name,
-        label: country.name,
+        value: country.name_ptbr,
+        label: country.name_ptbr,
       };
     });
   },
