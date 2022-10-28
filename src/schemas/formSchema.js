@@ -1,9 +1,5 @@
 import * as yup from "yup";
 
-yup.addMethod(yup.string, "integer", function () {
-  return this.matches(/^\d+$/, "Digite apenas números");
-});
-
 const formSchema = yup.object().shape({
   name: yup.string().required("* Nome é um campo obrigatório"),
   email: yup
@@ -13,13 +9,11 @@ const formSchema = yup.object().shape({
   telephone: yup
     .string()
     .required("* Telefone é um campo obrigatório")
-    .length(11, "* Telefone inválido")
-    .integer(),
+    .length(13, "* Telefone inválido"),
   CPF: yup
     .string()
     .required("* CPF é um campo obrigatório")
-    .length(11, "* CPF precisa ter 11 digitos")
-    .integer(),
+    .length(14, "* CPF precisa ter 11 digitos"),
 });
 
 export default formSchema;
