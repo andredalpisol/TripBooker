@@ -94,7 +94,7 @@ export const Home = () => {
               <input
                 {...register("telephone")}
                 className="form-label"
-                placeholder="12113213213"
+                placeholder="11912345678"
                 name="telephone"
                 maxLength="11"
               />
@@ -121,6 +121,7 @@ export const Home = () => {
                 setSelectedCountries(value);
               }}
               className={styles.select}
+              placeholder="Escolha um ou mais país"
               options={countries}
               isMulti
               value={selectedCountries}
@@ -130,6 +131,7 @@ export const Home = () => {
 
             <Select
               {...register("cities")}
+              placeholder="Escolha uma ou mais cidades"
               onChange={(value) => setSelectedCities(value)}
               value={selectedCities}
               name="cities"
